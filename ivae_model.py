@@ -12,7 +12,7 @@ from torch.optim import Adam
 from torch.utils.data.distributed import DistributedSampler
 from torch.nn.parallel import DistributedDataParallel as DDP
 
-os.environ['CUDA_VISIBLE_DEVICES']='6,7'
+##os.environ['CUDA_VISIBLE_DEVICES']='...'
 device='cuda'
 download_root='./data'
 
@@ -226,8 +226,8 @@ def main(rank,world_size):
             
             num_items+=x.shape[0]
         tqdm_epoch.set_description('Average loss: {:5f}'.format(avg_loss/num_items))
-        ##cleanup()
-    torch.save(model.module.state_dict(),'/DataCommon2/wtjeong/model/VAE2.pt')
+       
+  ## torch.save(model.module.state_dict(),'... .pt')
 
 import torch.multiprocessing as mp
 if __name__ == '__main__':
