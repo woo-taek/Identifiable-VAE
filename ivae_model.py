@@ -98,8 +98,10 @@ class ConvVae(nn.Module):
         )
 
         ## Concatenate Y to X
-        self.Emb = nn.Linear(28*28+10,28*28)
-
+        self.Emb = nn.Sequential(
+                            nn.Linear(28*28+10,28*28),
+                            nn.ReLU(inplace=True)
+        )
         ## Prior distribution with auxiliary variable $\mathbf{y}$: $p_\lambda(\mathbf{z|y})$ selected as Gaussian
         self.p = nn.Sequential(
                             nn.Linear(10,64),
